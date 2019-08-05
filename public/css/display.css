@@ -1,0 +1,84 @@
+
+.card {
+    margin: 1%;
+}
+
+.card-body {
+    background: #30a2ff;
+}
+
+body {
+	width: 100wh;
+	height: 90vh;
+	color: #fff;
+	background: rgb(255, 194, 63); 
+}
+
+
+.navbar a {
+    font-family: 'Abril Fatface', serif;
+    color: white;
+    font-size: 400%;
+    margin: 0%;
+    padding: 0%;
+    margin-left: 1%;
+}
+
+.navbar {
+    
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    height: 18%;
+}
+
+#refresh, #bookmark, #logout {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+#refresh:hover, #bookmark:hover, #logout:hover{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 2px solid white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    color: #F7B322;
+}
+
+.btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    border: 2px solid white;
+    border-radius: 40px;
+    margin: 5px;
+    background-color: transparent;
+    color: white;   
+}
+
+.btn:hover {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    border-radius: 40px;
+    border: 2px solid white;
+    background-color: white;
+    margin: 5px;
+    color: #30a2ff;
+}

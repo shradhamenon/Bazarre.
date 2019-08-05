@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,400&display=swap" rel="stylesheet">
+
+    <link href="/css/website_pick.css" rel="stylesheet" type="text/css">
+
+    <title>Bazarre. | Choose Websites</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="./">B.</a>
+        <button style="color:white;" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span style="color:white;" class="navbar-toggler-icon"></span>
+        </button>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <p style="font-family: 'Raleway', serif; font-weight: 200; font-size: 200%; margin-left: 15px; margin-top: 15px;"
+                    class="nav-link"><%= fullname %> </p>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+            <button style="font-size: 120%;" id="refresh" class="btn">Bookmarks</button>
+        </form>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/auth/logout">
+            <button style="font-size: 120%;" id="bookmarks" class="btn" type="submit" href="/auth/logout">Logout</button>
+        </form>
+    </nav>
+
+    <p id="para">Enter upto 3 websites to search for your item:</p>
+    <form method="GET" action="/item">
+        <div id="sites">
+            <div class="d-flex flex-row">
+                <div> <button id="add" type="button" class="btn btn-light ml-3">＋</button></div>
+                <button id="next" type="submit" href="/item" class="btn btn-light btn-lg">Next →</button>
+            </div>
+            <br>
+            <div class="site input-group mb-3">
+                <input name="web1" required id="web1" type="text" class="site form-control" placeholder="Website Name"
+                    aria-label="Website Name" aria-describedby="basic-addon2">
+            </div>
+        </div>
+    </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        var count = 0;
+        $(document).on('click', '#add', function () {
+            clickFunc()
+
+            if (count == 1) {
+                var html = '<div class="site input-group mb-3"><input name="web2" id="web2" type="text" class="form-control" placeholder="Website Name" aria-label="Website Name" aria-describedby="basic-addon2"> <div class="input-group-append"></div></div>'
+            }
+
+            if (count == 2) {
+                var html = '<div class="site input-group mb-3"><input name="web3" id="web3" type="text" class="form-control" placeholder="Website Name" aria-label="Website Name" aria-describedby="basic-addon2"> <div class="input-group-append"></div></div>'
+            }
+            console.log(count)
+            $('#sites').append(html);
+        });
+
+
+        function clickFunc() {
+            count += 1;
+            var btn = document.querySelector('#add');
+
+            if (count >= 2)
+                btn.disabled = true;
+        }
+    </script>
+</body>
+
+</html>

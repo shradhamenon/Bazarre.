@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,400&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link href="/css/display.css" rel="stylesheet" type="text/css">
+
+    <title>Bazarre. | Results</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="./">B.</a>
+        <button style="color:white;" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span style="color:white;" class="navbar-toggler-icon"></span>
+        </button>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <p style="font-family: 'Raleway', serif; font-weight: 200; font-size: 200%; margin-left: 15px; margin-top: 15px;"
+                    class="nav-link"><%= fullname %> </p>
+            </li>
+        </ul>
+
+        <button style="font-size: 120%;" id="refresh" class="btn">Refresh</button>
+        <button style="font-size: 120%;" id="bookmarks" class="btn">Bookmarks</button>
+
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/auth/logout">
+            <button style="font-size: 120%;" id="logout" class="btn" type="submit" href="/auth/logout">Logout</button>
+        </form>
+    </nav>
+
+    <div class="card-group" style="margin-left: 5%; margin-right: 5%;">
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script type='text/javascript'>
+
+
+        var index_1 = 0;
+        var index_2 = 0;
+        var index_3 = 0;
+        var bookmarks_list = <%-JSON.stringify(bookmarks)%>;
+        var results_1 = <%-JSON.stringify(results_1)%>;
+        var results_2 = <%-JSON.stringify(results_2)%>;
+        var results_3 = <%-JSON.stringify(results_3)%>;
+        var web1 = <%-JSON.stringify(web1)%>;
+        var web2 = <%-JSON.stringify(web2)%>;
+        var web3 = <%-JSON.stringify(web3)%>;
+
+        if (results_1.length != 0) {
+            ++index_1;
+            if (index_1 >= results_1.length) {
+                index_1 = 0;
+            }
+            var html = '<div id="card1" class="card" style="width: 10rem;"><span style="text-align: center; display:block overflow: hidden;"><img style="max-height: 300px; width: auto; max-width: 314px; overflow: hidden;" src="' + results_1[0][2] + '" class="card-img-top"></span><div class="card-body"> <small>' + web1 + '</small> <h5 class="card-title" style="color: white">' + results_1[0][0] + '</h5><a id="dislike1" href="#" class="btn btn-primary">Dislike</a><a id="bookmark1" href="#" class="btn btn-primary">Bookmark</a><a href="' + results_1[0][1] + '" target="_blank" class="btn btn-primary">Visit Site</a></div></div>'
+            $('.card-group').append(html);
+        } else {
+            var html = '<div id="card1" class="card" style="width: 10rem;"> <img style="height: 300px; width: auto;" src="http://www.ru-adventure.com/wp-content/uploads/2015/10/White-LARGE-background.jpg" class="card-img-top"> <div class="card-body"> <small>Empty</small> <h5 class="card-title" style="color: white">Empty</h5><br><a id="dislike1" href="#" class="btn btn-primary">Dislike</a><a id="bookmark1" href="#" class="btn btn-primary">Bookmark</a><a href="#" class="btn btn-primary">Visit Site</a></div></div>'
+            $('.card-group').append(html);
+        }
+
+        if (results_2.length != 0) {
+            ++index_2;
+            if (index_2 >= results_2.length) {
+                index_2 = 0;
+            }
+            var html = '<div id="card2" class="card" style="width: 10rem;"><span style="text-align: center; display:block overflow: hidden;"><img style="overflow: hidden; max-width: 314px; max-height: 300px; width: auto;" src="' + results_2[0][2] + '" class="card-img-top"></span><div class="card-body"> <small>' + web2 + '</small> <h5 class="card-title" style="color: white">' + results_2[0][0] + '</h5><a id="dislike2" href="#" class="btn btn-primary">Dislike</a><a id="bookmark2" href="#" class="btn btn-primary">Bookmark</a><a href="' + results_2[0][1] + '" target="_blank" class="btn btn-primary">Visit Site</a></div></div>'
+            $('.card-group').append(html);
+        } else {
+            var html = '<div id="card2" class="card" style="width: 10rem;"> <img style="height: 300px; width: auto;" src="http://www.ru-adventure.com/wp-content/uploads/2015/10/White-LARGE-background.jpg" class="card-img-top"> <div class="card-body"> <small>Empty</small> <h5 class="card-title" style="color: white">Empty</h5><br><a id="dislike2" href="#" class="btn btn-primary">Dislike</a><a id="bookmark2" href="#" class="btn btn-primary">Bookmark</a><a href="#" class="btn btn-primary">Visit Site</a></div></div>'
+            $('.card-group').append(html);
+        }
+
+        if (results_3.length != 0) {
+            ++index_3;
+            if (index_3 >= results_3.length) {
+                index_3 = 0;
+            }
+            var html = '<div id="card3" class="card" style="width: 10rem;"><span style="text-align: center; display:block overflow: hidden;"><img style="max-height: 300px; max-width: 314px; overflow: hidden; width: auto;" src="' + results_3[0][2] + '" class="card-img-top"></span><div class="card-body"> <small>' + web3 + '</small> <h5 class="card-title" style="color: white">' + results_3[0][0] + '</h5><a id="dislike3" href="#" class="btn btn-primary">Dislike</a><a id="bookmark3" href="#" class="btn btn-primary">Bookmark</a><a href="' + results_3[0][1] + '" target="_blank" class="btn btn-primary">Visit Site</a></div></div>'
+            $('.card-group').append(html);
+        } else {
+            var html = '<div id="card3" class="card" style="width: 10rem;"> <img style="height: 300px; width: auto;" src="http://www.ru-adventure.com/wp-content/uploads/2015/10/White-LARGE-background.jpg"> <div class="card-body"> <small>Empty</small> <h5 class="card-title" style="color: white">Empty</h5><br><a id="dislike3" href="#" class="btn btn-primary">Dislike</a><a id="bookmark3" href="#" class="btn btn-primary">Bookmark</a><a href="#" class="btn btn-primary">Visit Site</a></div></div>'
+            $('.card-group').append(html);
+        }
+
+        function refresh1() {
+            if (results_1.length != 0) {
+                var html = '<div id="card1" class="card" style="width: 10rem;"><span style="text-align: center; display:block overflow: hidden;"><img style="overflow: hidden; max-width: 314px; max-height: 300px; width: auto;" src="' + results_1[index_1][2] + '" class="card-img-top"></span><div class="card-body"> <small>' + web1 + '</small> <h5 class="card-title" style="color: white">' + results_1[index_1][0] + '</h5><a id="dislike1" href="#" class="btn btn-primary">Dislike</a><a id="bookmark1" href="#" class="btn btn-primary">Bookmark</a><a href="' + results_1[index_1][1] + '" target="_blank" class="btn btn-primary">Visit Site</a></div></div>'
+                $('#card1').replaceWith(html);
+                ++index_1;
+                if (index_1 >= results_1.length) {
+                    index_1 = 0;
+                }
+            } else {
+                var html = '<div id="card1" class="card" style="width: 10rem;"> <img style="height: 300px; width: auto;" src="http://www.ru-adventure.com/wp-content/uploads/2015/10/White-LARGE-background.jpg" class="card-img-top"> <div class="card-body"> <small>Empty</small> <h5 class="card-title" style="color: white">Empty</h5><br><a id="dislike1" href="#" class="btn btn-primary">Dislike</a><a id="bookmark1" href="#" class="btn btn-primary">Bookmark</a><a href="#" class="btn btn-primary">Visit Site</a></div></div>'
+                $('#card1').replaceWith(html);
+            }
+        }
+        function refresh2() {
+
+            if (results_2.length != 0) {
+                var html = '<div id="card2" class="card" style="width: 10rem;"><span style="text-align: center; display:block overflow: hidden;"><img style="overflow: hidden; max-width: 314px; max-height: 300px; width: auto;" src="' + results_2[index_2][2] + '" class="card-img-top"></span><div class="card-body"> <small>' + web2 + '</small> <h5 class="card-title" style="color: white">' + results_2[index_2][0] + '</h5><a id="dislike2" href="#" class="btn btn-primary">Dislike</a><a id="bookmark2" href="#" class="btn btn-primary">Bookmark</a><a href="' + results_2[index_2][1] + '" target="_blank" class="btn btn-primary">Visit Site</a></div></div>'
+                $('#card2').replaceWith(html);
+                ++index_2;
+                if (index_2 >= results_2.length) {
+                    index_2 = 0;
+                }
+            } else {
+                var html = '<div id="card2" class="card" style="width: 10rem;"> <img style="height: 300px; width: auto;" src="http://www.ru-adventure.com/wp-content/uploads/2015/10/White-LARGE-background.jpg" class="card-img-top"> <div class="card-body"> <small>Empty</small> <h5 class="card-title" style="color: white">Empty</h5><br><a id="dislike2" href="#" class="btn btn-primary">Dislike</a><a id="bookmark2" href="#" class="btn btn-primary">Bookmark</a><a href="#" class="btn btn-primary">Visit Site</a></div></div>'
+                $('#card2').replaceWith(html);
+            }
+        }
+
+        function refresh3() {
+
+            if (results_3.length != 0) {
+                var html = '<div id="card3" class="card" style="width: 10rem;"><span style="text-align: center; display:block overflow: hidden;"><img style="overflow: hidden; max-width: 314px; max-height: 300px; width: auto;" src="' + results_3[index_3][2] + '" class="card-img-top"></span><div class="card-body"> <small>' + web3 + '</small> <h5 class="card-title" style="color: white">' + results_3[index_3][0] + '</h5><a id="dislike3" href="#" class="btn btn-primary">Dislike</a><a id="bookmark3" href="#" class="btn btn-primary">Bookmark</a><a href="' + results_3[index_3][1] + '" target="_blank" class="btn btn-primary">Visit Site</a></div></div>'
+                $('#card3').replaceWith(html);
+                ++index_3;
+                if (index_3 >= results_3.length) {
+                    index_3 = 0;
+                }
+            } else {
+                var html = '<div id="card3" class="card" style="width: 10rem;"> <img style="height: 300px; width: auto;" src="http://www.ru-adventure.com/wp-content/uploads/2015/10/White-LARGE-background.jpg" class="card-img-top"> <div class="card-body"> <small>Empty</small> <h5 class="card-title" style="color: white">Empty</h5><br><a id="dislike3" href="#" class="btn btn-primary">Dislike</a><a id="bookmark3" href="#" class="btn btn-primary">Bookmark</a><a href="#" class="btn btn-primary">Visit Site</a></div></div>'
+                $('#card3').replaceWith(html);
+            }
+        }
+
+        $(document).on('click', '#refresh', function () {
+            refresh1();
+            refresh2();
+            refresh3();
+        });
+
+        $(document).on('click', '#dislike1', function () {
+            results_1.splice(index_1, 1);
+            refresh1();
+        });
+
+        $(document).on('click', '#dislike2', function () {
+            results_2.splice(index_2, 1);
+            refresh2();
+        });
+        
+        $(document).on('click', '#dislike3', function () {
+            results_3.splice(index_3, 1);
+            refresh3();
+        });
+
+        $(document).on('click', '#bookmark1', function () {
+            --index_1;
+            bookmarks_list.push(results_1[index_1]);
+            results_1.splice(index_1, 1);
+            refresh1();
+        });
+
+        $(document).on('click', '#bookmark2', function () {
+            --index_2;
+            bookmarks_list.push(results_2[index_2]);
+            results_2.splice(index_2, 1);
+            refresh2();
+        });
+
+        $(document).on('click', '#bookmark3', function () {
+            --index_3;
+            bookmarks_list.push(results_3[index_3]);
+            results_3.splice(index_3, 1);
+            refresh3();
+        });
+        
+    </script>
+</body>
+
+</html>

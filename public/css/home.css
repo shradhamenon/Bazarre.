@@ -1,0 +1,119 @@
+h1 {
+    font-family: 'Abril Fatface', serif;
+    color: white;
+    font-size: 600%;
+}
+
+.raise:hover {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+p {
+    font-family: 'Raleway', cursive;
+    font-size: 250%;
+    color: white;
+    text-align: center;
+    font-weight: 200;
+}
+
+body {
+    background-color: #F7B322;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    height: 100vh;
+    width: 100%
+}
+
+.centered {
+position: absolute;
+  margin: auto;
+  text-align: center;
+}
+
+.btn {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 150%;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+.btn:hover{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 2px solid white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    color: #F7B322;
+}
+
+.cred {
+    color: white;
+    font-size: 70%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5px;
+}
+
+body {
+	width: 100wh;
+	height: 90vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #fff19f, #ffe656, rgb(252, 221, 45), rgb(255, 194, 61), #ff9d00, #ff791f);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
