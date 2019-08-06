@@ -37,8 +37,8 @@
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <button style="font-size: 120%;" id="refresh" class="btn">Bookmarks</button>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/bookmarks">
+            <button type="submit" href="/bookmarks" style="font-size: 120%;"" id="bookmarks" class="btn">Bookmarks</button>
         </form>
         <form class="form-inline my-2 my-lg-0" method="GET" action="/auth/logout">
             <button style="font-size: 120%;" id="bookmarks" class="btn" type="submit" href="/auth/logout">Logout</button>

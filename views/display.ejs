@@ -40,7 +40,11 @@
         </ul>
 
         <button style="font-size: 120%;" id="refresh" class="btn">Refresh</button>
-        <button style="font-size: 120%;" id="bookmarks" class="btn">Bookmarks</button>
+
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/bookmarks">
+            <input type="hidden" name="bookmark_list" id="bookmarkHTML">
+            <button type="submit" href="/bookmarks" style="font-size: 120%;"" id="bookmarks" class="btn">Bookmarks</button>
+        </form>
 
         <form class="form-inline my-2 my-lg-0" method="GET" action="/auth/logout">
             <button style="font-size: 120%;" id="logout" class="btn" type="submit" href="/auth/logout">Logout</button>
@@ -74,6 +78,9 @@
         var web1 = <%-JSON.stringify(web1)%>;
         var web2 = <%-JSON.stringify(web2)%>;
         var web3 = <%-JSON.stringify(web3)%>;
+
+        var input = document.getElementById('bookmarkHTML');
+        input.value = bookmarks_list;
 
         if (results_1.length != 0) {
             ++index_1;
@@ -169,7 +176,7 @@
             results_2.splice(index_2, 1);
             refresh2();
         });
-        
+
         $(document).on('click', '#dislike3', function () {
             results_3.splice(index_3, 1);
             refresh3();
@@ -179,6 +186,7 @@
             --index_1;
             bookmarks_list.push(results_1[index_1]);
             results_1.splice(index_1, 1);
+            input.value = bookmarks_list;
             refresh1();
         });
 
@@ -186,6 +194,7 @@
             --index_2;
             bookmarks_list.push(results_2[index_2]);
             results_2.splice(index_2, 1);
+            input.value = bookmarks_list;
             refresh2();
         });
 
@@ -193,9 +202,10 @@
             --index_3;
             bookmarks_list.push(results_3[index_3]);
             results_3.splice(index_3, 1);
+            input.value = bookmarks_list;
             refresh3();
         });
-        
+
     </script>
 </body>
 

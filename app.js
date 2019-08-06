@@ -6,7 +6,9 @@ var mongoose = require('mongoose');
 var cookieSession = require('cookie-session');
 var passport = require('passport');
 var app = express();
-
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth20');
+var User = require('./config/models/user-model');
 
 
 app.use(express.static(__dirname + '/public'));
@@ -177,10 +179,25 @@ app.get("/display", function (req, res) {
 app.get("/bookmarks", function (req, res) {
     var fullname = app.get('fullname');
     var id = app.get('id');
-    var googleID = app.get('googleID');
-    var bookmarks = req.query.bookmarks_list;
+    var googleID_got = app.get('googleID');
+    try {
+        var bookmarks_string = req.query.bookmark_list;
+        var bookmarks_flat = bookmarks_string.split(',');
+        var bookmarks_list = [];
+        for(var i = 0; i < (bookmarks_flat.length / 3); ++i) {
+            bookmarks_list.push([bookmarks_flat[i*3], bookmarks_flat[(i*3) + 1], bookmarks_flat[(i*3) + 2]]);
+        }
 
-    
+    } catch (error) {
+        var bookmarks_list = app.get('bookmarks');
+    }
+
+    User.findOneAndUpdate({ googleID: googleID_got }, { $set: { bookmarks: bookmarks_list}}, {
+        new: true
+    }, function (error, result) {
+        console.log('done');
+    });
+    res.render("bookmarks.ejs", {fullname: fullname, id: id, googleID: googleID, bookmarks: bookmarks_list});    
 });
 
 app.listen(5000);
