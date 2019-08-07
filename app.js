@@ -176,6 +176,33 @@ app.get("/display", function (req, res) {
         })
 });
 
+app.get("/update-bookmarks", function (req, res) {
+    var fullname = app.get('fullname');
+    var id = app.get('id');
+    var googleID_got = app.get('googleID');
+    try {
+        var bookmarks_string = req.query.bookmark_list;
+        var bookmarks_flat = bookmarks_string.split(',');
+        var bookmarks_list = [];
+        for(var i = 0; i < (bookmarks_flat.length / 3); ++i) {
+            bookmarks_list.push([bookmarks_flat[i*3], bookmarks_flat[(i*3) + 1], bookmarks_flat[(i*3) + 2]]);
+        }
+        app.set('bookmarks', bookmarks_list);
+    } catch (error) {
+        var bookmarks_list = app.get('bookmarks');
+    }
+
+    console.log(bookmarks_list);
+    
+    User.findOneAndUpdate({ googleID: googleID_got }, { $set: { bookmarks: bookmarks_list}}, {
+        new: true
+    }, function (error, result) {
+        console.log('done');
+    });
+    
+    res.redirect("/bookmarks");   
+});
+
 app.get("/bookmarks", function (req, res) {
     var fullname = app.get('fullname');
     var id = app.get('id');
@@ -187,7 +214,7 @@ app.get("/bookmarks", function (req, res) {
         for(var i = 0; i < (bookmarks_flat.length / 3); ++i) {
             bookmarks_list.push([bookmarks_flat[i*3], bookmarks_flat[(i*3) + 1], bookmarks_flat[(i*3) + 2]]);
         }
-
+        app.set('bookmarks', bookmarks_list);
     } catch (error) {
         var bookmarks_list = app.get('bookmarks');
     }
@@ -197,7 +224,7 @@ app.get("/bookmarks", function (req, res) {
     }, function (error, result) {
         console.log('done');
     });
-    res.render("bookmarks.ejs", {fullname: fullname, id: id, googleID: googleID, bookmarks: bookmarks_list});    
+    res.render("bookmarks.ejs", {fullname: fullname, id: id, googleID: googleID_got, bookmarks: bookmarks_list});    
 });
 
 app.listen(5000);
