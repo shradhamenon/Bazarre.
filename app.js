@@ -16,13 +16,13 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: ['bazarrecookie']
+    keys: ['']
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb+srv://shradhamenon:horrorland@bazarre-ck1dv.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true }, () => {
+mongoose.connect('', { useNewUrlParser: true }, () => {
     console.log('db connected');
 })
 
@@ -91,9 +91,9 @@ app.get("/display", function (req, res) {
     for (var i = 0; i < 10; ++i) {
         var result_page = 1 + (10 * i);
 
-        var result1_url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBYNIX9fQ2730Bs9OSxqNnw8yasVUcfH9c&cx=016991028233952270186:saqsw3bd9nq&num=10&siteSearch=' + web1 + '&siteSearchFilter=i&q=' + item_join + '&start=' + result_page;
-        var result2_url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBYNIX9fQ2730Bs9OSxqNnw8yasVUcfH9c&cx=016991028233952270186:saqsw3bd9nq&num=10&siteSearch=' + web2 + '&siteSearchFilter=i&q=' + item_join + '&start=' + result_page;
-        var result3_url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBYNIX9fQ2730Bs9OSxqNnw8yasVUcfH9c&cx=016991028233952270186:saqsw3bd9nq&num=10&siteSearch=' + web3 + '&siteSearchFilter=i&q=' + item_join + '&start=' + result_page;
+        var result1_url = 'https://www.googleapis.com/customsearch/v1?key=&cx=&num=10&siteSearch=' + web1 + '&siteSearchFilter=i&q=' + item_join + '&start=' + result_page;
+        var result2_url = 'https://www.googleapis.com/customsearch/v1?key=&cx=&num=10&siteSearch=' + web2 + '&siteSearchFilter=i&q=' + item_join + '&start=' + result_page;
+        var result3_url = 'https://www.googleapis.com/customsearch/v1?key=&cx=&num=10&siteSearch=' + web3 + '&siteSearchFilter=i&q=' + item_join + '&start=' + result_page;
 
         try {
             promises.push(new Promise(function (resolve, reject) {
